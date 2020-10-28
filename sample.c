@@ -73,6 +73,14 @@ typedef enum {
     ND_NUM,     // 整数
 } NodeKind;
 
+typedef struct Node Node;
+struct Node {
+    NodeKind kind; // Node kind
+    Node *lhs;     // Left hand
+    Node *rhs;     // Right hand
+    int val;       // Used if kind == ND_NUM
+};
+
 Node *new_node(NodeKind kind) {
     Node *node = calloc(1, sizeof(Node));
     node->kind = kind;
@@ -174,7 +182,7 @@ int main(int argc,char **argv){
     if(argc !=2)
         error("%s: invalid number of arguments",argv[0]);
 
-    user_input = argv[1]
+    user_input = argv[1];
     token = tokenize();
     Node *node = expr();
 
@@ -189,5 +197,5 @@ int main(int argc,char **argv){
     //
     printf("  pop rax\n");
     printf("  ret\n");
-    return 0   
+    return 0;   
 }
