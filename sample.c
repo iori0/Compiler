@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 typedef enum {
     TK_RESERVED, // 記号
     TK_NUM,      // 整数
