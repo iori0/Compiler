@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 typedef enum {
     TK_RESERVED, // 記号
@@ -80,7 +81,7 @@ struct Node {
     NodeKind kind; // Node kind
     Node *lhs;     // Left hand
     Node *rhs;     // Right hand
-    int val;       // Used if kind == ND_NUM
+    int val;       // This will be used if kind == ND_NUM
 };
 
 Node *new_node(NodeKind kind) {
@@ -96,6 +97,7 @@ Node *new_binary(NodeKind kind, Node *lhs, Node *rhs) {
     return node;
 }
 
+//整数
 Node *new_num(int val) {
     Node *node = new_node(ND_NUM);
     node->val = val;
@@ -106,7 +108,7 @@ Node *expression();
 Node *mul();
 Node *primary();
 
-//
+//+-
 Node *expression() {
     Node *node = mul();
 
